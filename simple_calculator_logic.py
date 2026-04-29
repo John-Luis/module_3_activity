@@ -32,7 +32,7 @@ class MaangasUI(FileHandler):
         # Linking to the parent and setting the filename
         super().__init__(filename="LifeVault_History.txt")
 
-        # Mapping simple symbols to our functions
+
         self.operations = {
             "+": add,
             "-": sub,
