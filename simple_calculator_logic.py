@@ -11,6 +11,16 @@ def div(a, b):
     if b == 0: raise ZeroDivisionError("Cannot divide by zero.")
     return a / b
 
+
 class FileHandler:
     def __init__(self, filename):
         self.filename = filename
+
+    def save_to_vault(self, math_input, result):
+        """This method will be inherited by the UI class."""
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_entry = f"[{timestamp}] INPUT: {math_input} | RESULT: {result}\n"
+
+        with open(self.filename, "a") as file:
+            file.write(log_entry)
+        print(f"📁 Logged to {self.filename}")
