@@ -39,3 +39,9 @@ class MaangasUI(FileHandler):
             "*": mult,
             "/": div
         }
+
+    def start(self):
+        print("=" * 40)
+        print("🚀 ALPHA CALCULATOR v2.0 | ONLINE")
+        print("Usage: [num] [op] [num] | Type 'OFF' to quit")
+        print("=" * 40)
