@@ -24,3 +24,18 @@ class FileHandler:
         with open(self.filename, "a") as file:
             file.write(log_entry)
         print(f"📁 Logged to {self.filename}")
+
+
+# Inherits from FileHandler to gain the save_to_vault capability.
+class MaangasUI(FileHandler):
+    def __init__(self):
+        # Linking to the parent and setting the filename
+        super().__init__(filename="LifeVault_History.txt")
+
+        # Mapping simple symbols to our functions
+        self.operations = {
+            "+": add,
+            "-": sub,
+            "*": mult,
+            "/": div
+        }
