@@ -1,3 +1,4 @@
+# Importing functions and the parent class from processor.py
 from simple_calculator_logic import FileHandler, add, sub, mult, div
 
 
@@ -28,3 +29,26 @@ class MaangasUI(FileHandler):
                 parts = user_input.split()
                 if len(parts) != 3:
                     raise IndexError("Format: [num] [op] [num]")
+
+                num1, op, num2 = float(parts[0]), parts[1], float(parts[2])
+
+                if op in self.operations:
+                    result = self.operations[op](num1, num2)
+                    print(f"✨ RESULT: {result}")
+
+                    # Using the inherited method from FileHandler
+                    self.save_to_vault(user_input, result)
+                else:
+                    print("❌ Error: Invalid operator.")
+
+            except ValueError:
+                print("⚠️ Error: Please enter valid numbers.")
+            except (IndexError, ZeroDivisionError) as e:
+                print(f"⚠️ {e}")
+            except Exception as e:
+                print(f"⚠️ Unexpected Error: {e}")
+
+
+
+app = MaangasUI()
+app.start()
