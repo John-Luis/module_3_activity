@@ -1,15 +1,20 @@
 import datetime
 import os
 
+class CalculatorLogic(FileHandler):
+    def __init__(self, filename="LifeVault_History.txt"):
+        # Calling the parent class constructor
+        super().__init__(filename)
 
-#Creating the core math functions here
-def add(a, b): return a + b
-def sub(a, b): return a - b
-def mult(a, b): return a * b
+    def add(self, a, b): return a + b
+    def sub(self, a, b): return a - b
+    def mult(self, a, b): return a * b
+    def power(self, a, b): return a ** b
+    def mod(self, a, b): return a % b
 
-def div(a, b):
-    if b == 0: raise ZeroDivisionError("Cannot divide by zero.")
-    return a / b
+    def div(self, a, b):
+        if b == 0: raise ZeroDivisionError("Cannot divide by zero.")
+        return a / b
 
 
 import datetime
