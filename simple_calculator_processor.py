@@ -2,6 +2,7 @@ import sys
 import time
 from simple_calculator_logic import CalculatorLogic
 import os
+import platform
 
 CYAN = "\033[96m"
 GREEN = "\033[92m"
