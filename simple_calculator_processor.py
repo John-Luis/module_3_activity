@@ -39,20 +39,38 @@ class MaangasUI(CalculatorLogic):
         print(f"User: John Luis")
 
     def start(self):
-        # Clear terminal for the "Alpha" experience
+        # Clear terminal for that fresh "System Boot" feel
         os.system('cls' if os.name == 'nt' else 'clear')
 
-        typewriter(f"{GREEN}🚀 ALPHA CALCULATOR v3.0 | SYSTEM STABLE{RESET}")
-        print(f"{YELLOW}Commands: 'SYS' for hardware, 'WIPE' to clear logs, 'OFF' to exit{RESET}")
+        # --- STARTUP HEADER ---
+        typewriter(f"{GREEN}🚀 ALPHA CALCULATOR v3.0 | SYSTEM ONLINE{RESET}")
+        print(f"{CYAN}Developed by: John Luis | Computer Engineering{RESET}")
+        print("-" * 50)
+
+        # --- FUNCTIONALITY OVERVIEW ---
+        print(f"{YELLOW}CORE CAPABILITIES:{RESET}")
+        print(f"  [+] Addition        [-] Subtraction")
+        print(f"  [*] Multiplication  [/] Division")
+        print(f"  [**] Power/Exp      [%] Modulo")
+        print(f"\n{YELLOW}SYSTEM COMMANDS:{RESET}")
+        print(f"  'SYS'   -> View hardware manifest")
+        print(f"  'WIPE'  -> Purge all calculation logs")
+        print(f"  'OFF'   -> Terminate session safely")
+
+        # --- USAGE EXAMPLES ---
+        print(f"\n{GREEN}HOW TO USE:{RESET}")
+        print(f"  Format: [number] [operator] [number]")
+        print(f"  Example: {CYAN}10 + 5{RESET}  or  {CYAN}2 ** 3{RESET}")
+        print("-" * 50)
+        typewriter(f"{YELLOW}Ready for input...{RESET}")
 
         while True:
             try:
-                # Colored input prompt
                 user_input = input(f"\n{CYAN}λ >> {RESET}").strip()
                 cmd = user_input.upper()
 
                 if cmd == "OFF":
-                    typewriter(f"{GREEN}Terminating session. Stay epic, John Luis!{RESET}")
+                    typewriter(f"{GREEN}Saving logs... Shutting down. Stay epic, John Luis!{RESET}")
                     break
                 elif cmd == "WIPE":
                     self.wipe_vault()
@@ -64,17 +82,18 @@ class MaangasUI(CalculatorLogic):
 
                 parts = user_input.split()
                 if len(parts) != 3:
-                    raise IndexError("Usage: [num] [op] [num]")
+                    print(f"{RED}⚠️ Invalid Format. Example: 5 + 5{RESET}")
+                    continue
 
                 num1, op, num2 = float(parts[0]), parts[1], float(parts[2])
 
                 if op in self.operations:
                     result = self.operations[op](num1, num2)
-                    print(f"{GREEN}✨ RESULT: {result}{RESET}")
-                    # Method inherited through logic class
+                    print(f"{GREEN}✨ CALCULATION: {num1} {op} {num2} = {result}{RESET}")
+                    # Inherited from CalculatorLogic/FileHandler
                     self.save_to_vault(user_input, result)
                 else:
-                    print(f"{RED}❌ Error: Unauthorized operator.{RESET}")
+                    print(f"{RED}❌ Error: '{op}' is not a recognized operator.{RESET}")
 
             except Exception as e:
                 print(f"{RED}⚠️ Error: {e}{RESET}")
