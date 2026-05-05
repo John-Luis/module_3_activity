@@ -12,16 +12,19 @@ def div(a, b):
     return a / b
 
 
+import datetime
+
 class FileHandler:
-    def __init__(self, filename):
+    def __init__(self, filename="LifeVault_History.txt"):
         self.filename = filename
 
     def save_to_vault(self, math_input, result):
-        """This method will be inherited by the UI class."""
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         log_entry = f"[{timestamp}] INPUT: {math_input} | RESULT: {result}\n"
-
         with open(self.filename, "a") as file:
             file.write(log_entry)
-        print(f"📁 Logged to {self.filename}")
+
+    def wipe_vault(self):
+        """Purges the log file."""
+        open(self.filename, 'w').close()
 
