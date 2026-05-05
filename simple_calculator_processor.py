@@ -1,16 +1,24 @@
-# Importing functions and the parent class from processor.py
-from simple_calculator_logic import FileHandler, add, sub, mult, div
+import sys
+import time
+from simple_calculator_logic import CalculatorLogic
 
+# Aesthetic tools for the "Maangas" vibe
+CYAN, GREEN, RED, YELLOW, RESET = "\033[96m", "\033[92m", "\033[91m", "\033[93m", "\033[0m"
 
-# --- CHILD CLASS (Inheritance) ---
-class MaangasUI(FileHandler):
+def typewriter(text, speed=0.02):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(speed)
+    print()
+
+class MaangasUI(CalculatorLogic):
     def __init__(self):
-        # Setting up the parent class with a filename
-        super().__init__(filename="log_history_calculator.txt")
-
-        # Mapping symbols to the imported functions
+        # Inherits both math and logging from CalculatorLogic
+        super().__init__()
         self.operations = {
-            "+": add, "-": sub, "*": mult, "/": div
+            "+": self.add, "-": self.sub, "*": self.mult,
+            "/": self.div, "**": self.power, "%": self.mod
         }
 
     def start(self):
