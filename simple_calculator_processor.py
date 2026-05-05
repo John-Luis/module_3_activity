@@ -6,7 +6,7 @@ from simple_calculator_logic import FileHandler, add, sub, mult, div
 class MaangasUI(FileHandler):
     def __init__(self):
         # Setting up the parent class with a filename
-        super().__init__(filename="LifeVault_History.txt")
+        super().__init__(filename="log_history_calculator.txt")
 
         # Mapping symbols to the imported functions
         self.operations = {

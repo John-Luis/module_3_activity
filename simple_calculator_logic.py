@@ -2,7 +2,7 @@ import datetime
 import os
 
 class CalculatorLogic(FileHandler):
-    def __init__(self, filename="LifeVault_History.txt"):
+    def __init__(self, filename="log_history_calculator.txt"):
         # Calling the parent class constructor
         super().__init__(filename)
 
@@ -20,7 +20,7 @@ class CalculatorLogic(FileHandler):
 import datetime
 
 class FileHandler:
-    def __init__(self, filename="LifeVault_History.txt"):
+    def __init__(self, filename="log_history_calculator.txt"):
         self.filename = filename
 
     def save_to_vault(self, math_input, result):
